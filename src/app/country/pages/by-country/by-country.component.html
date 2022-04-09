@@ -17,12 +17,12 @@
 
 <hr>
 
-<div class="alert alert-danger">
-  Nothing was found for the term {{ term }}
+<div *ngIf="hasError" class="alert alert-danger">
+  The {{ term }} was not found
 </div>
 
 
-<div class="row">
+<div *ngIf="!hasError" class="row">
   <div class="col">
 
     <table class="table table-hover">

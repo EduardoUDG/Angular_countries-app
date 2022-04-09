@@ -10,6 +10,7 @@ import { CountryService } from '../../services/country.service';
 export class ByCountryComponent {
 
   term: string = '';
+  hasError: boolean = false;
 
 
   constructor( private countryService: CountryService ) { }
@@ -17,11 +18,15 @@ export class ByCountryComponent {
 
 
   search(): void {
+    this.hasError = false;
     console.log( this.term );
+    
     this.countryService.serachContry( this.term )
-      .subscribe( resp => console.log( resp ) );
-
-    this.term = '';
+      .subscribe( (resp) => {
+        console.log( resp );
+      }, ( err ) => {
+        this.hasError = true;
+      });
   }
 
 }
