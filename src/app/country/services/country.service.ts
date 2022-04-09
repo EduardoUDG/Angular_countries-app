@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { Country } from '../interfaces/contry.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,9 @@ export class CountryService {
 
 
 
-  serachContry( term: string ):Observable<any> {
+  serachContry( term: string ):Observable<Country[]> {
     const url = `${this.apiUrl}/name/${term}`;
-    return this.http.get( url );
+    return this.http.get<Country[]>( url );
   }
 
 }

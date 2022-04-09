@@ -20,10 +20,10 @@ export class ByCountryComponent {
   search(): void {
     this.hasError = false;
     console.log( this.term );
-    
+
     this.countryService.serachContry( this.term )
-      .subscribe( (resp) => {
-        console.log( resp );
+      .subscribe( ( countries ) => {
+        console.log( countries );
       }, ( err ) => {
         this.hasError = true;
       });
