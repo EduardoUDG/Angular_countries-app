@@ -36,4 +36,9 @@ export class ByCountryComponent {
       });
   }
 
+
+  suggestion( term:string ) {
+    this.hasError = false;
+    
+  }
 }
