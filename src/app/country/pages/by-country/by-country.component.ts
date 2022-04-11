@@ -20,15 +20,16 @@ export class ByCountryComponent {
 
 
 
-  search(): void {
+  search( term: string ): void {
     this.hasError = false;
+    this.term     = term;
     console.log( this.term );
 
-    this.countryService.serachContry( this.term )
+    this.countryService.serachContry( term )
       .subscribe( ( countries ) => {
         console.log( countries );
         this.countries = countries;
-        
+
       }, ( err ) => {
         this.hasError   = true;
         this.countries  = [];
