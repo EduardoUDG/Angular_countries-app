@@ -14,18 +14,38 @@
   </div>
 
   <div class="row">
+
     <div class="col-4">
       <h3>Flag</h3>
       <img [src]="country.flags['svg']" class="img-thumbnail">
     </div>
+
+    <div class="col">
+      <h3>Information</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Population</strong>: {{ country.population | number }}
+        </li>
+        <li class="list-group-item">
+          <strong>Numeric code</strong>: {{ country.ccn3 }}
+        </li>
+        <li class="list-group-item">
+          <strong>Numeric Alpha</strong>: {{ country.cca3 }}
+        </li>
+      </ul>
+    </div>
+
   </div>
 
-  <div class="col">
-    <h3>Information</h3>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>Population</strong>: {{ country.population | number }}
-      </li>
-    </ul>
+  <h3>Traducciones</h3>
+  <div class="row">
+    <div class="col">
+      <span *ngFor="let language of languages" class="badge bg-primary mr-1">{{ language.common }}</span>
+    </div>
   </div>
+
+  <!-- <pre class="mt-5">
+    {{ country | json }}
+  </pre> -->
+
 </ng-template>

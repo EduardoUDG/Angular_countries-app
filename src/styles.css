@@ -8,3 +8,7 @@
   display: flex;
   justify-content: center;
 }
+
+.mr-1 {
+  margin-right: 5px;
+}
