@@ -6,8 +6,6 @@ import { Country } from '../../interfaces/contry.interface';
 @Component({
   selector: 'app-by-country',
   templateUrl: './by-country.component.html',
-  styles: [
-  ]
 })
 export class ByCountryComponent {
 
@@ -39,6 +37,6 @@ export class ByCountryComponent {
 
   suggestion( term:string ) {
     this.hasError = false;
-    
+
   }
 }
