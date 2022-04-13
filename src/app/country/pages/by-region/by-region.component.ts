@@ -18,6 +18,12 @@ export class ByRegionComponent {
 
   constructor() { }
 
+  getClassCss( region:string ): string {
+    return ( region === this.activeRegion )
+            ? 'btn btn-primary'
+            : 'btn btn-outline-primary';
+  }
+
   activateRegion( region: string ) {
     this.activeRegion = region;
   }
