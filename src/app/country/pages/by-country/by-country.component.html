@@ -7,11 +7,25 @@
       <app-country-search-input
         (onEnter)="search( $event )"
         (onDebounce)="suggestion( $event )"
-        placeholder="Search country..."
-      >
+        placeholder="Search country...">
       </app-country-search-input>
     </div>
   </div>
+
+  <ul *ngIf="showSuggested" class="list-group">
+    <li *ngFor="let suggestedCountry of suggestedCountries" class="list-group-item list-group-item-action">
+      <a class="nav-link"
+         [routerLink]="['/country', suggestedCountry.cca2]">
+        {{ suggestedCountry.name.common }}
+      </a>
+    </li>
+    <li class="list-group-item list-group-item-action"
+        (click)="suggestedSearch( term )">
+      <a class="nav-link">
+        Search "{{ term }}"
+      </a>
+    </li>
+  </ul>
 
   <hr>
 </div>
