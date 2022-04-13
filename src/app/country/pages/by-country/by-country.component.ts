@@ -21,7 +21,6 @@ export class ByCountryComponent {
   search( term: string ): void {
     this.hasError = false;
     this.term     = term;
-    console.log( this.term );
 
     this.countryService.serachContry( term )
       .subscribe( ( countries ) => {
