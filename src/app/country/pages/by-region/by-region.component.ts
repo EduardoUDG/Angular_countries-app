@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Country } from '../../interfaces/contry.interface';
+import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-by-region',
@@ -12,11 +14,12 @@ import { Component } from '@angular/core';
 })
 export class ByRegionComponent {
 
-  regions     : string[]= ['africa', 'americas', 'asia', 'europe', 'oceania'];
-  activeRegion: string  = '';
+  activeRegion    : string  = '';
+  countries       : Country[] = [];
+  regions         : string[]= ['africa', 'americas', 'asia', 'europe', 'oceania'];
 
 
-  constructor() { }
+  constructor( private countryService: CountryService ) { }
 
   getClassCss( region:string ): string {
     return ( region === this.activeRegion )
@@ -24,10 +27,21 @@ export class ByRegionComponent {
             : 'btn btn-outline-primary';
   }
 
-  activateRegion( region: string ) {
-    this.activeRegion = region;
-  }
 
+  activateRegion( region: string ) {
+
+    if( this.activeRegion === region ) return;
+
+    this.activeRegion = region;
+    this.countries    = [];
+
+    this.countryService.getRegionByName( region )
+      .subscribe({
+        next: countries => {
+          this.countries = countries;
+        },
+      });
+  }
 
 
 }
