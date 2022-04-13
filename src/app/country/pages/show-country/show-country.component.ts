@@ -29,10 +29,15 @@ export class ShowCountryComponent implements OnInit {
         switchMap( ({ id }) => this.countryService.getCountryByAlpha( id ) ),
         tap( console.log )
       )
-      .subscribe( (country: Country[]) => {
-        this.country    = country[0]
-        const {translations} = country[0];
-        this.languages =  Object.values(translations);
+      .subscribe({
+        next: (country: Country[]) => {
+          this.country    = country[0]
+          const {translations} = country[0];
+          this.languages =  Object.values(translations);
+        },
+        error: (error) => {
+          console.log('Hubo un error al mostrar país');
+        }
       });
   }
 
